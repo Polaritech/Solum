@@ -36,4 +36,4 @@ Solum comes with some utility interfaces to make using the rendering backends ea
 - Add `/Build/<Arch>/<Config>/Output` to your `LD_LIBRARY_PATH` variable.
 
 ## Contributing
-To contribute so Solum, take a look at the [contributing guidelines](https://git.polaritech.com/Polaritech/Solum/blob/master/CONTRIBUTING.md), as well as the [style guidelines](https://git.polaritech.com.com/Polaritech/Solum/blob/master/Documentation/StyleGuide.md).
+To contribute so Solum, take a look at the [contributing guidelines](http://git.polaritech.com/Polaritech/Solum/blob/master/CONTRIBUTING.md), as well as the [style guidelines](http://git.polaritech.com.com/Polaritech/Solum/blob/master/Documentation/StyleGuide.md).
