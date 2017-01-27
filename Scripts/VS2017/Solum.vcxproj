@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!-- Global Properties -->
+    <PropertyGroup>
+        <RelativeRoot>../../</RelativeRoot>
+    </PropertyGroup>
+
+    <!-- Define Configurations -->
+    <ItemGroup Label="ProjectConfigurations">
+        <ProjectConfiguration Include="Debug|x64">
+            <Configuration>Debug</Configuration>
+            <Platform>x64</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Debug|Win32">
+            <Configuration>Debug</Configuration>
+            <Platform>Win32</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Release|x64">
+            <Configuration>Release</Configuration>
+            <Platform>x64</Platform>
+        </ProjectConfiguration>
+        <ProjectConfiguration Include="Release|Win32">
+            <Configuration>Release</Configuration>
+            <Platform>Win32</Platform>
+        </ProjectConfiguration>
+    </ItemGroup>
+
+    <!-- Import Default C++ Properties -->
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+    <!-- Define Cross-Configuration Properties -->
+    <PropertyGroup>
+        <ConfigurationType>Application</ConfigurationType>
+        <PlatformToolset>v141</PlatformToolset>
+        <CharacterSet>MultiByte</CharacterSet>
+        <OutDir>$(RelativeRoot)Build\$(Platform)\$(Configuration)\Libraries\</OutDir>
+        <IntDir>$(RelativeRoot)Build\$(Platform)\$(Configuration)\Objects\</IntDir>
+    </PropertyGroup>
+
+    <!-- Define Configuation-Specific Properties -->
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <UseDebugLibraries>true</UseDebugLibraries>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <UseDebugLibraries>false</UseDebugLibraries>
+        <WholeProgramOptimization>true</WholeProgramOptimization>
+    </PropertyGroup>
+
+    <!-- Import C++ Properties -->
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+
+    <!-- Define Cross-Configuration Properties -->
+    <ItemDefinitionGroup>
+        <ClCompile>
+            <WarningLevel>Level4</WarningLevel>
+            <SDLCheck>true</SDLCheck>
+            <AdditionalOptions>/std:c++latest %(AdditionalOptions)</AdditionalOptions>
+            <AssemblerListingLocation>$(IntDir)%(RelativeDir)</AssemblerListingLocation>
+            <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+            <XMLDocumentationFileName>$(IntDir)%(RelativeDir)</XMLDocumentationFileName>
+            <PreprocessorDefinitions>SOLUM_EXPORT;SOLUM_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+        </ClCompile>
+        <Link>
+            <EnableCOMDATFolding>true</EnableCOMDATFolding>
+            <OptimizeReferences>true</OptimizeReferences>
+        </Link>
+    </ItemDefinitionGroup>
+
+    <!-- Define Configuration-Specific Item Properties -->
+    <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+        <ClCompile>
+            <Optimization>Disabled</Optimization>
+        </ClCompile>
+    </ItemDefinitionGroup>
+    <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+        <ClCompile>
+            <Optimization>MaxSpeed</Optimization>
+            <FunctionLevelLinking>true</FunctionLevelLinking>
+            <IntrinsicFunctions>true</IntrinsicFunctions>
+        </ClCompile>
+    </ItemDefinitionGroup>
+
+    <!-- C++ Files -->
+    <ItemGroup>
+        <CLInclude Include="$(RelativeRoot)Include/**/*.hpp" />
+        <CLCompile Include="$(RelativeRoot)Source/**/*.cpp" />
+    </ItemGroup>
+
+    <!-- C++ Targets -->
+    <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Targets" />
+</Project>
